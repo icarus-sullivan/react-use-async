@@ -14,7 +14,7 @@ yarn add @sullivan/use-async
 
 
 # Usage
-Example usage is describe below, [click here](https://github.com/icarus-sullivan/react-use-async/blob/master/DOCUMENATION.md) for additional api documentation.  
+Example usage is describe below, [click here](https://github.com/icarus-sullivan/react-use-async/blob/master/DOCUMENTATION.md) for additional api documentation.  
 
 ### useAync
 useAnyc is used to call any function in an asynchronous manner. 

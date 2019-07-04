@@ -74,7 +74,7 @@ import { withAsync } from '@sullivan/use-async';
 const FetchButton = ({ dispatch, data, loading, error, ...props }) => (
 	<div>
 		<pre>{JSON.stringify({ data, error })}</pre>
-		<button>{loading ? 'Loading' : 'Request' }</button>
+		<button onClick={dispatch}>{loading ? 'Loading' : 'Request' }</button>
 	</div>
 );
 

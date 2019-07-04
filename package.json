@@ -1,0 +1,35 @@
+{
+  "name": "@sullivan/use-async",
+  "version": "0.0.1",
+  "description": "Perform async operations within react",
+  "main": "lib/index.js",
+  "files": [
+    "lib/*"
+  ],
+  "scripts": {
+    "prepublish": "yarn build",
+    "build": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/icarus-sullivan/react-use-async.git"
+  },
+  "keywords": [
+    "react",
+    "use",
+    "async",
+    "dynamic",
+    "useAync"
+  ],
+  "author": "Chris Sullivan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/icarus-sullivan/react-use-async/issues"
+  },
+  "homepage": "https://github.com/icarus-sullivan/react-use-async#readme",
+  "devDependencies": {
+    "@types/react": "^16.8.10",
+    "@types/react-dom": "^16.8.3",
+    "typescript": "^3.4.1"
+  }
+}

@@ -81,7 +81,7 @@ const FetchButton = ({ dispatch, data, loading, error, ...props }) => (
 export default withAsync(fetch, 'https://github.com')(FetchButton);
 
 ```
-# Dynamic Args: withAysnc 
+### Dynamic Args: withAysnc 
 Using the component above, we can dynamically modify its args. 
 ```javascript
 import React from 'react';

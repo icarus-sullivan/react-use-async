@@ -23,17 +23,17 @@ import React from 'react';
 import { useAsync } from '@sullivan/use-async';
 
 const asyncFn = (delay) => new Promise((resolve) => {
-    setTimeout(resolve, delay); 
+  setTimeout(resolve, delay); 
 });
 
 const Example = (props) => {
-    const { loading, data, error, dispatch } = useAsync(asyncFn, 1000);
-    
-    return (
-        <div onClick={dispatch}>
-            <h1>{loading ? 'Loading' : 'Done'}</h1>
-        </div>
-    );
+  const { loading, data, error, dispatch } = useAsync(asyncFn, 1000);
+  
+  return (
+    <div onClick={dispatch}>
+      <h1>{loading ? 'Loading' : 'Done'}</h1>
+    </div>
+  );
 };
 ```
 
@@ -44,41 +44,56 @@ import React, { useState } from 'react';
 import { useAsync } from '@sullivan/use-async';
 
 const asyncFn = (delay) => new Promise((resolve) => {
-    setTimeout(resolve, delay); 
+  setTimeout(resolve, delay); 
 });
 
 const Example = (props) => {
-    const [delay, setDelay] = useState(0);
-    const { loading, data, error, dispatch } = useAsync(asyncFn, delay);
-    
-    return (
-        <div onClick={() => {
-            setDelay(delay + 1000);
-            dispatch();
-        }}>
-            <h1>{loading ? 'Loading' : 'Done'}</h1>
-        </div>
-    );
+  const [delay, setDelay] = useState(0);
+  const { loading, data, error, dispatch } = useAsync(asyncFn, delay);
+  
+  return (
+    <div onClick={() => {
+      setDelay(delay + 1000);
+      dispatch();
+    }}>
+      <h1>{loading ? 'Loading' : 'Done'}</h1>
+    </div>
+  );
 
-    return null;
+  return null;
 };
 ```
 
 ### withAsync
-If you are always calling the same asynchronous function within a component, you can use this higher order component to inject that call into your Components props. 
+Injects useAsync data into your Components props
 
 ```javascript
 import React from 'react';
 import { withAsync } from '@sullivan/use-async';
 
 const FetchButton = ({ dispatch, data, loading, error, ...props }) => (
-	<div>
-		<pre>{JSON.stringify({ data, error })}</pre>
-		<button onClick={dispatch}>{loading ? 'Loading' : 'Request' }</button>
-	</div>
+  <div>
+    <pre>{JSON.stringify({ data, error })}</pre>
+    <button onClick={dispatch}>{loading ? 'Loading' : 'Request' }</button>
+  </div>
 );
 
 export default withAsync(fetch, 'https://github.com')(FetchButton);
+
+```
+# Dynamic Args: withAysnc 
+Using the component above, we can dynamically modify its args. 
+```javascript
+import React from 'react';
+import FetchButton from 'components/FetchButton';
+
+const Example = (props) => (
+  <div>
+    <FetchButton args={['https://www.npmjs.com/package/@sullivan/use-async']} />
+  </div>
+);
+
+export default Example;
 
 ```
 

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { useAsync } from '@sullivan/use-async';
 
+import Button from './buttonHOC';
+
 const asyncFn = (delay) => new Promise((resolve) => {
     setTimeout(() => resolve({
       success: true,
@@ -21,6 +23,7 @@ const Example = () => {
             setDelay(delay + 1000);
           }}>+1000 delay</button>
           <button onClick={dispatch}>Dispatch</button>
+          <Button args={['https://www.npmjs.com/package/@sullivan/use-async']} />
         </div>
     );
 };

@@ -38,6 +38,15 @@ export const useAsync = (fn: Function, ...args: any[]): Response => {
   };
 };
 
-export const withAsync = (fn: Function, ...args: any[]) => 
-  (Component: any) => 
-  (props: any) => (<Component {...props} {...useAsync(fn, ...args)} />);
+export const withAsync = (fn: Function, ...vargs: any[]) => 
+  (Component: any) =>
+  ({ args, ...props }: any) => {
+    const conditionalArgs = args || vargs;
+    const mergeProps = {
+      ...props,
+      ...useAsync(fn, ...conditionalArgs),
+    };
+    return (
+      <Component {...mergeProps} />
+    );
+  };

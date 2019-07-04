@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import React, { useReducer } from 'react';
 
 interface Action {
   type: number,
@@ -37,3 +37,7 @@ export const useAsync = (fn: Function, ...args: any[]): Response => {
     ...state,
   };
 };
+
+export const withAsync = (fn: Function, ...args: any[]) => 
+  (Component: any) => 
+  (props: any) => (<Component {...props} {...useAsync(fn, ...args)} />);

@@ -3,7 +3,7 @@
 # @sullivan/use-async
 Dynamic asynchronous operations for React 16.8+. 
 
-### Installation
+## Installation
 ```
 npm install --save @sullivan/use-async
 ```
@@ -12,20 +12,12 @@ or
 yarn add @sullivan/use-async
 ```
 
-# useAsync(call[, params]) => <T>
 
-* call <AsyncFunction> 
-* params <VarArgs> to be passed to `call` 
+# Usage
+Example usage is describe below, [click here](https://github.com/icarus-sullivan/react-use-async/blob/master/DOCUMENATION.md) for additional api documentation.  
 
-# <T>
-| Property | Type | Description | 
-|--|--|--|
-| loading | boolean | Whether the call is has finished |
-| data | any | The response from the async call |
-| error | Error | Any error that occured during the async call |
-| dispatch | Function | Kicks off the async call |
-
-### Usage
+### useAync
+useAnyc is used to call any function in an asynchronous manner. 
 ```javascript
 import React from 'react';
 import { useAsync } from '@sullivan/use-async';
@@ -45,7 +37,8 @@ const Example = (props) => {
 };
 ```
 
-### Dynamic Param Usage 
+### Dynamic params: useAsync
+Using other hooks, you can dynamically update the useAsync params.  
 ```javascript
 import React, { useState } from 'react';
 import { useAsync } from '@sullivan/use-async';
@@ -69,6 +62,24 @@ const Example = (props) => {
 
     return null;
 };
+```
+
+### withAsync
+If you are always calling the same asynchronous function within a component, you can use this higher order component to inject that call into your Components props. 
+
+```javascript
+import React from 'react';
+import { withAsync } from '@sullivan/use-async';
+
+const FetchButton = ({ dispatch, data, loading, error, ...props }) => (
+	<div>
+		<pre>{JSON.stringify({ data, error })}</pre>
+		<button>{loading ? 'Loading' : 'Request' }</button>
+	</div>
+);
+
+export default withAsync(fetch, 'https://github.com')(FetchButton);
+
 ```
 
 * Please note, the async function is not immediately invoked. To call it use the `dispatch` function. 

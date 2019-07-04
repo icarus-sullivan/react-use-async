@@ -1,4 +1,4 @@
-![npm downloads total](https://img.shields.io/npm/dt/@sullivan/use-async.svg) ![npm version](https://img.shields.io/npm/v/@sullivan/use-async.svg) ![npm license](https://img.shields.io/npm/l/@sullivan/use-async.svg)
+![npm version](https://img.shields.io/npm/v/@sullivan/use-async.svg) ![npm license](https://img.shields.io/npm/l/@sullivan/use-async.svg)
 
 # @sullivan/use-async
 Dynamic asynchronous operations for React 16.8+. 

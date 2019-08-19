@@ -13,7 +13,7 @@ yarn add @sullivan/use-async
 ```
 
 
-# Hook Usage
+## Hook Usage
 
 ```javascript
 import React from 'react';
@@ -30,7 +30,7 @@ const Example = (props) => {
 };
 ```
 
-# Higher-Order-Component Usage
+## Higher-Order-Component Usage
 
 ```javascript
 import React from 'react';

@@ -20,16 +20,16 @@ const config = [
 
 const asyncReducer = (_: any, { type, payload }: Action) => config[type](payload);
 
-export const useAsync = (fn: Function, ...args: any[]): Response => {
+export const useAsync = (fn: Function): Response => {
   const [state, _dispatch] = useReducer(asyncReducer, { 
     loading: false,
   });
 
-  const dispatch = () => {
+  const dispatch = (...args: any[]) => {
     _dispatch({ type: 0 });
     Promise.resolve(fn(...args))
       .then((payload) => _dispatch({ type: 1, payload }))
-      .catch((e) => _dispatch({ type: 2, payload: e }));
+      .catch((payload) => _dispatch({ type: 2, payload }));
   }
 
   return {
@@ -38,15 +38,11 @@ export const useAsync = (fn: Function, ...args: any[]): Response => {
   };
 };
 
-export const withAsync = (fn: Function, ...vargs: any[]) => 
+export const withAsync = (fn: Function) => 
   (Component: any) =>
-  ({ args, ...props }: any) => {
-    const conditionalArgs = args || vargs;
-    const mergeProps = {
-      ...props,
-      ...useAsync(fn, ...conditionalArgs),
-    };
+  (props: any) => {
+    const asyncProps = useAsync(fn);
     return (
-      <Component {...mergeProps} />
+      <Component {...props} {...asyncProps} />
     );
   };

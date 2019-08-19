@@ -1,14 +1,13 @@
 {
   "name": "@sullivan/use-async",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Perform async operations within react",
   "main": "lib/index.js",
   "files": [
     "lib/*"
   ],
   "scripts": {
-    "prepublish": "yarn build",
-    "build": "tsc -p ."
+    "prepare": "tsc -p ."
   },
   "repository": {
     "type": "git",

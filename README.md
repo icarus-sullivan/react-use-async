@@ -54,7 +54,7 @@ const Example = (props) => {
 ----
 
 ## Changelog 
-**0.2.0**
+**1.0.0**
 
 - Removed withAsync HOC
 - Added options for debounce and memoization 

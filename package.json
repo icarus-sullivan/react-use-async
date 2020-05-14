@@ -1,6 +1,6 @@
 {
   "name": "@sullivan/use-async",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Perform async operations within react",
   "main": "lib/index.js",
   "files": [

@@ -8,6 +8,7 @@ const sleep = (delay) =>
       () =>
         resolve({
           success: true,
+          time: Date.now(),
         }),
       delay,
     );

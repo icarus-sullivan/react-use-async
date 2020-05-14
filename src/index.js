@@ -11,7 +11,7 @@ const config = [
 const asyncReducer = (state, { type, payload }) =>
   config[type]({ state, payload });
 
-const wrapFn = (original, options) => {
+const prepareFn = (original, options) => {
   let fn = original;
   if (options && options.debounce) {
     fn = debounce(fn, options.debounce);
@@ -22,12 +22,12 @@ const wrapFn = (original, options) => {
   return fn;
 };
 
-const useAsync = (fn, options = {}) => {
+export default (fn, options = {}) => {
   const [state, _dispatch] = useReducer(asyncReducer, {
     loading: false,
   });
 
-  const original = useRef(wrapFn(fn, options));
+  const original = useRef(prepareFn(fn, options));
   const { current: dispatch } = useRef((...args) => {
     _dispatch({ type: 0 });
     Promise.resolve(original.current(...args))
@@ -40,5 +40,3 @@ const useAsync = (fn, options = {}) => {
     ...state,
   };
 };
-
-export default useAsync;

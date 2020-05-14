@@ -1,7 +1,7 @@
 ![npm version](https://img.shields.io/npm/v/@sullivan/use-async.svg) ![npm license](https://img.shields.io/npm/l/@sullivan/use-async.svg)
 
 # @sullivan/use-async
-Dynamic asynchronous operations for React 16.8+. 
+Hook friendly asynchronous operations for React 16.8+. 
 
 ## Installation
 ```
@@ -13,7 +13,7 @@ yarn add @sullivan/use-async
 ```
 
 
-## Hook Usage
+## Usage
 
 ```javascript
 import React from 'react';
@@ -30,20 +30,31 @@ const Example = (props) => {
 };
 ```
 
-## Higher-Order-Component Usage
+### Options
 
-```javascript
-import React from 'react';
-import { withAsync } from '@sullivan/use-async';
+`useAsync(fn, options?) => Response`
 
-const URL = 'https://www.npmjs.com/package/@sullivan/use-async';
+| Option | Description | Type |
+|--|--|--|
+| debounce | Milliseconds to perform a debounce, ignores if unset | number |
+| memoize | If memoization should be done | boolean |
 
-const Example = ({ loading, data, error, dispatch, ...props }) => (
-  <button onClick={() => dispatch(URL)} >
-    Request Webpage
-  </button>
-);
 
-export default withAsync(fetch)(Example);
-```
+### Response
 
+| Field | Description |
+|--|--|
+| loading | If the async call is occuring | 
+| error | Any error that was thrown |
+| data | The success result of the async call | 
+| dispatch | How to invoke the async function | 
+
+
+
+----
+
+## Changelog 
+**0.2.0**
+
+- Removed withAsync HOC
+- Added options for debounce and memoization 
